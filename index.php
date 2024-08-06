@@ -1,6 +1,7 @@
 <?php
 
 require_once 'autoloader.php';
+//require_once 'PHPUnit\Framework.php';
 
 use classes\TableWrapper;
 
@@ -16,5 +17,7 @@ $users_list = $users->get();
 foreach($users_list as $user) {
   echo $user["name"] . ' ' .  $user["surname"] . PHP_EOL;
 }
+
+
 
 echo PHP_EOL;

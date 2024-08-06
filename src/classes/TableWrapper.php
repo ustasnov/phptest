@@ -44,10 +44,12 @@ class TableWrapper implements TableWrapperInterface
       }
     }
 
-    public function insert(array $values): void
+    public function insert(array $values): int
     {
         $this->validate($values);
-        $this->rows[] = $values;     
+        $this->rows[] = $values;
+        end($this->rows);
+        return key($this->rows);     
     }
 
     public function update(int $id, array $values): array
@@ -66,6 +68,10 @@ class TableWrapper implements TableWrapperInterface
         throw new \Exception("В таблице не записи с id = $id!");  
       }
       unset($rows[$id]);
+    }
+
+    public function clear(): void {
+      $this->rows = [];
     }
 
     public function get(): array {
