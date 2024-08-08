@@ -1,8 +1,8 @@
 <?php
 declare(strict_types= 1);
 
-//require_once 'autoloader.php';
-require_once '../autoloader.php';
+require_once 'autoloader.php';
+//require_once '../autoloader.php';
 //require_once "../src/interfaces/TableWrapperInterface.php";
 //require_once "../src/classes/TableWrapper.php";
 
