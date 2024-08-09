@@ -7,12 +7,6 @@ use interfaces\TableWrapperInterface;
 class TableWrapper implements TableWrapperInterface
 {
     private array $columns = [];
-    //[
-    //  "surname" => "string",
-    //  "name" => "string",
-    //  "age" => "int"
-    //];
-
     private array $rows = [];
 
     public function __construct(array $columns) {
@@ -20,11 +14,6 @@ class TableWrapper implements TableWrapperInterface
     }
 
     public function validate(array $values): void {
-      //проверяем переданное значение
-      if (!is_array($values)) {
-        throw new \Exception("Переданное значение не массив!");
-      }
-
       // проверяем колонки
       $columns_count = count($this->columns);
       if (count($values) !== $columns_count) {
@@ -56,7 +45,7 @@ class TableWrapper implements TableWrapperInterface
     {
       $this->validate($values);
       if (!array_key_exists($id, $this->rows)) {
-        throw new \Exception("В таблице не записи с id = $id!");  
+        throw new \Exception("В таблице нет записи с id = $id!");  
       } 
       $this->rows[$id] = $values;
       return $this->rows[$id];    
@@ -65,9 +54,9 @@ class TableWrapper implements TableWrapperInterface
     public function delete(int $id): void
     {
       if (!array_key_exists($id, $this->rows)) {
-        throw new \Exception("В таблице не записи с id = $id!");  
+        throw new \Exception("В таблице нет записи с id = $id!");  
       }
-      unset($rows[$id]);
+      unset($this->rows[$id]);
     }
 
     public function clear(): void {
